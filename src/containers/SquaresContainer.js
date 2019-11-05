@@ -1,15 +1,35 @@
 import React, { Component } from 'react';
-import SquareFront from '../components/SquareFront';
-import SquareBack from '../components/SquareBack';
+import IdeaDisplay from '../components/IdeaDisplay';
 
 export default class SquaresContainer extends Component {
+
+  state = {
+    activeSquareID: "none"
+  }
+
+  showIdea = (id) => {
+    this.setState({ activeSquareID: id })
+  }
+
+  closeIdea = () => {
+    this.setState({ activeSquareID: "none" })
+  }
+
+  makeSquares = () => {
+    return this.props.ideas.map((idea) => {
+      return (idea.id !== this.state.activeSquareID)
+        ? (
+          <div onClick={() => this.showIdea(idea.id)} className="square-front"></div>
+        ) : (
+          <IdeaDisplay key={idea.id} closeIdea={this.closeIdea} idea={idea} />
+        )
+    })
+  }
 
   render() {
     return(
       <div className="squares-container">
-        <h2>Square Container</h2>
-        <SquareFront />
-        <SquareBack />
+        {this.makeSquares()}
       </div>
     )
   }

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 export default function Welcome() {
 
   return (
-    <main className="welcome-wrapper">
+    <main className="wrapper">
       <div className="welcome-content">
         <img className="logo" src="https://www.yourmomhatesthis.com/images/2017/07/illuminati-png.png" alt="illuminati logo" />
         <h1>IdeaBox</h1>
