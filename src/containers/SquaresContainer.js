@@ -19,7 +19,7 @@ export default class SquaresContainer extends Component {
     return this.props.ideas.map((idea) => {
       return (idea.id !== this.state.activeSquareID)
         ? (
-          <div onClick={() => this.showIdea(idea.id)} className="square-front"></div>
+          <div key={idea.id} className="square-front" onClick={() => this.showIdea(idea.id)}></div>
         ) : (
           <IdeaDisplay key={idea.id} closeIdea={this.closeIdea} idea={idea} />
         )

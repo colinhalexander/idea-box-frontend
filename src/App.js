@@ -14,17 +14,9 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    // fetch ideas
-    const ideas = []
-    for (let i = 0; i <= 1000; i++) {
-      ideas.push({
-        id: i,
-        content: "This is an idea, I hope you like it",
-        author: "Abraham Lincoln"
-      })
-    }
-
-    this.setState({ ideas })
+    fetch("http://localhost:3000/ideas")
+      .then(response => response.json())
+      .then(ideas => this.setState({ ideas }))
   }
 
   render() {

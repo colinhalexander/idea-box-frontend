@@ -15,13 +15,26 @@ export default class IdeaForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    // send fetch post to backend
+    
+    const request = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({ quote: this.state.content })
+    }
+
+    fetch("http://localhost:3000/ideas", request)
+      .then(response => response.json())
+      .then(console.log)
+
   }
 
   render() {
     return (
       <div className="wrapper">
-        <form className="idea-form">
+        <form className="idea-form" onSubmit={this.handleSubmit}>
           <h3>Submit Your Idea</h3>
           <textarea
             type="textarea"
@@ -29,14 +42,6 @@ export default class IdeaForm extends Component {
             id="content-input"
             placeholder="Your Idea Here"
             value={this.state.content}
-            onChange={this.handleChange}
-          />
-          <input
-            type="text"
-            id="author-input"
-            name="author"
-            placeholder="Full Name"
-            value={this.state.author}
             onChange={this.handleChange}
           />
           <input id="submit-btn" type="submit" value="Submit"/>

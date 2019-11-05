@@ -9,7 +9,10 @@ export default function Welcome() {
         <img className="logo" src="https://www.yourmomhatesthis.com/images/2017/07/illuminati-png.png" alt="illuminati logo" />
         <h1>IdeaBox</h1>
         <p>Welcome to IdeaBox! This website has a lot of squares, and those squares have ideas. That's about it.</p>
-        <Link id="start-btn" to="/ideas">Start</Link>
+        <div className="nav-links">
+          <Link id="start-btn" to="/ideas">Start</Link>
+          <Link id="form-btn" to="/new-idea">Add an Idea</Link>
+        </div>
       </div>
     </main>
   )
